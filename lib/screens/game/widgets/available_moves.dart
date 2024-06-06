@@ -44,13 +44,10 @@ class AvailableMoves extends StatelessWidget {
           ),
           Consumer<PlayerProvider>(
               builder: (context, player, child) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Moves(move: player.game.currentMoves[0]),
-                      Moves(move: player.game.currentMoves[1]),
-                      Moves(move: player.game.currentMoves[2])
-                    ],
-                  )),
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: player.game.currentMoves
+                      .map((move) => Moves(move: move))
+                      .toList())),
         ],
       ),
     );
