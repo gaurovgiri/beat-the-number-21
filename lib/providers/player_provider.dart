@@ -21,4 +21,11 @@ class PlayerProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void resetGame() {
+    game.resetGame();
+    currentPlayer = (game.turn == 0) ? 1 : 2;
+    playerColor =
+        (game.turn == 0) ? const Color(0xFFB73737) : const Color(0xFF5839D4);
+  }
 }

@@ -28,7 +28,7 @@ class NavButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(50)),
         child: TextButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(navigateTo);
+              Navigator.of(context).popAndPushNamed(navigateTo);
             },
             child: Text(
               text,
