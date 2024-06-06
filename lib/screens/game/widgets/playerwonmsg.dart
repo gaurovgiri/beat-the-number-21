@@ -3,8 +3,10 @@ import 'package:beat_the_number_21/screens/utils.dart';
 
 class PlayerWonMessage extends StatefulWidget {
   final String winner;
+  final Color playerColor;
 
-  const PlayerWonMessage({super.key, required this.winner});
+  const PlayerWonMessage(
+      {super.key, required this.winner, required this.playerColor});
 
   @override
   _PlayerWonMessageState createState() => _PlayerWonMessageState();

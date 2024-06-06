@@ -15,27 +15,24 @@ class BeatTheNumber21 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      child: ChangeNotifierProvider(
-          create: (context) => PlayerProvider(),
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            initialRoute: "/",
-            routes: {
-              "/": (BuildContext context) {
-                Provider.of<PlayerProvider>(context, listen: false)
-                    .game
-                    .resetGame();
-                return const HomeScreen();
-              },
-              "/playervscpu": (BuildContext context) =>
-                  const GameScreen(cpu: true),
-              "/playervsplayer": (BuildContext context) =>
-                  const GameScreen(cpu: false)
+    return ChangeNotifierProvider(
+        create: (context) => PlayerProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: "/",
+          routes: {
+            "/": (BuildContext context) {
+              Provider.of<PlayerProvider>(context, listen: false)
+                  .game
+                  .resetGame();
+              return const HomeScreen();
             },
-            theme: ThemeData(fontFamily: "FredokaOne"),
-          )),
-    );
+            "/playervscpu": (BuildContext context) =>
+                const GameScreen(cpu: true),
+            "/playervsplayer": (BuildContext context) =>
+                const GameScreen(cpu: false)
+          },
+          theme: ThemeData(fontFamily: "FredokaOne"),
+        ));
   }
 }

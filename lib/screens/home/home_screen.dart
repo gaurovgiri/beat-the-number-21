@@ -1,4 +1,5 @@
 import 'package:beat_the_number_21/screens/home/widgets/buttons.dart';
+import 'package:beat_the_number_21/screens/home/widgets/footer.dart';
 import 'package:beat_the_number_21/screens/home/widgets/title.dart';
 import 'package:beat_the_number_21/screens/utils.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,10 @@ class HomeScreen extends StatelessWidget {
                         navigateTo: "/playervsplayer")
                   ],
                 )),
+            SizedBox(
+              height: getHeight(context) * 0.3,
+              child: const Footer(),
+            )
           ],
         ),
       ),

@@ -6,7 +6,7 @@ class GameAppBar extends StatelessWidget {
   // Remove the @override annotation
   final Size preferredSize;
 
-  GameAppBar({Key? key})
+  const GameAppBar({Key? key})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -15,6 +15,7 @@ class GameAppBar extends StatelessWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
+      elevation: 0,
       actions: [
         IconButton(
           onPressed: () {

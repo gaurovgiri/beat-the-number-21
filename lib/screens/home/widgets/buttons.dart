@@ -12,7 +12,7 @@ class NavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: getWidth(context) * 0.6,
+        width: getWidth(context) * 0.65,
         height: getHeight(context) * 0.08,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black, width: 1),
@@ -28,7 +28,7 @@ class NavButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(50)),
         child: TextButton(
             onPressed: () {
-              Navigator.of(context).popAndPushNamed(navigateTo);
+              Navigator.of(context).pushNamed(navigateTo);
             },
             child: Text(
               text,
