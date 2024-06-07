@@ -6,9 +6,8 @@ class GameAppBar extends StatelessWidget {
   // Remove the @override annotation
   final Size preferredSize;
 
-  const GameAppBar({Key? key})
-      : preferredSize = const Size.fromHeight(kToolbarHeight),
-        super(key: key);
+  const GameAppBar({super.key})
+      : preferredSize = const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {

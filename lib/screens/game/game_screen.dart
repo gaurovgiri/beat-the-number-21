@@ -14,6 +14,7 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PlayerProvider>(
       builder: (context, player, child) {
+        player.isCpu = cpu;
         return Scaffold(
           body: RotatedBox(
             quarterTurns: (player.currentPlayer == 1) ? 0 : 2,

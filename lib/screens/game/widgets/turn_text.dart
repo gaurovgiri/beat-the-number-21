@@ -22,7 +22,7 @@ class TurnText extends StatelessWidget {
                 Text(
                   textAlign: TextAlign.center,
                   !player.game.previousMove.isNegative
-                      ? "Player ${player.previousPlayer} played \n ${player.game.previousMove}"
+                      ? "Player ${player.previousPlayer} played\n${player.game.previousMove}"
                       : "",
                   style: const TextStyle(fontSize: 18),
                 )
