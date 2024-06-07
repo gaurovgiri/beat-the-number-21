@@ -17,7 +17,11 @@ class GameScreen extends StatelessWidget {
         player.isCpu = cpu;
         return Scaffold(
           body: RotatedBox(
-            quarterTurns: (player.currentPlayer == 1) ? 0 : 2,
+            quarterTurns: (player.currentPlayer == 1)
+                ? 0
+                : (player.isCpu)
+                    ? 0
+                    : 2,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
               color: player.playerColor,

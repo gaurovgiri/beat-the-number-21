@@ -9,6 +9,7 @@ class PlayerProvider extends ChangeNotifier {
   late int currentPlayer;
   late int previousPlayer;
   bool isCpu = false;
+  bool canPlay = true;
 
   PlayerProvider() {
     currentPlayer = (game.turn == 0) ? 1 : 2;
@@ -16,29 +17,37 @@ class PlayerProvider extends ChangeNotifier {
   }
 
   void cpuPlay() {
-    List<int> moves = game.currentMoves;
-    int randomIndex = Random().nextInt(moves.length);
-    int selectedMove = moves[randomIndex];
-    playMove(selectedMove);
+    if (!game.hasFinished) {
+      List<int> moves = game.currentMoves;
+      int randomIndex = Random().nextInt(moves.length);
+      int selectedMove = moves[randomIndex];
+      playMove(selectedMove);
+    }
   }
 
   void playMove(int num) {
-    game.selectNumber(num);
-    playerColor =
-        (game.turn == 0) ? const Color(0xFFB73737) : const Color(0xFF5839D4);
-    currentPlayer = (game.turn == 0) ? 1 : 2;
-    previousPlayer = (game.turn == 0) ? 2 : 1;
+    if (!game.hasFinished) {
+      game.selectNumber(num);
+      playerColor =
+          (game.turn == 0) ? const Color(0xFFB73737) : const Color(0xFF5839D4);
+      currentPlayer = (game.turn == 0) ? 1 : 2;
+      previousPlayer = (game.turn == 0) ? 2 : 1;
 
-    if (isCpu && currentPlayer == 2) {
-      Timer(Duration(seconds: Random().nextInt(2) + 1), () {
-        cpuPlay();
-      });
+      if (isCpu && currentPlayer == 2) {
+        canPlay = false;
+        Timer(Duration(seconds: Random().nextInt(2) + 1), () {
+          notifyListeners();
+          cpuPlay();
+          canPlay = true;
+        });
+      }
+
+      notifyListeners();
     }
-
-    notifyListeners();
   }
 
   void resetGame() {
+    canPlay = true;
     game.resetGame();
     currentPlayer = (game.turn == 0) ? 1 : 2;
     playerColor =

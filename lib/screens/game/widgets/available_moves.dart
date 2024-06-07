@@ -19,7 +19,14 @@ class Moves extends StatelessWidget {
               backgroundColor: const Color(0xFFDDE113),
             ),
             onPressed: () {
-              player.playMove(move);
+              if (player.canPlay) {
+                player.playMove(move);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("You cannot play your move"),
+                  duration: Duration(seconds: 2),
+                ));
+              }
             },
             child:
                 Text(move.toString(), style: const TextStyle(fontSize: 28.44))),
