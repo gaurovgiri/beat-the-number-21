@@ -2,7 +2,6 @@ import 'package:beat_the_number_21/screens/game/widgets/gameappbar.dart';
 import 'package:beat_the_number_21/screens/game/widgets/gameboard.dart';
 import 'package:beat_the_number_21/screens/game/widgets/partypopper.dart';
 import 'package:beat_the_number_21/screens/game/widgets/playerwonmsg.dart';
-import 'package:beat_the_number_21/screens/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:beat_the_number_21/providers/player_provider.dart';
@@ -15,10 +14,10 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PlayerProvider>(
       builder: (context, player, child) {
-        return PopScope(
-          canPop: player.game.hasFinished,
-          child: Scaffold(
-            body: AnimatedContainer(
+        return Scaffold(
+          body: RotatedBox(
+            quarterTurns: (player.currentPlayer == 1) ? 0 : 2,
+            child: AnimatedContainer(
               duration: const Duration(milliseconds: 500),
               color: player.playerColor,
               child: Stack(
@@ -32,8 +31,8 @@ class GameScreen extends StatelessWidget {
                       winner: 'Player ${player.currentPlayer} won!',
                       playerColor: player.playerColor,
                     ),
+                  if (player.game.hasFinished) const GameAppBar(),
                   PartyPopper(show: player.game.hasFinished),
-                  if (player.game.hasFinished) const GameAppBar()
                 ],
               ),
             ),
