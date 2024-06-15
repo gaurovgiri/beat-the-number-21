@@ -1,3 +1,4 @@
+import 'package:beat_the_number_21/controllers/audio_controller.dart';
 import 'package:beat_the_number_21/providers/player_provider.dart';
 import 'package:beat_the_number_21/screens/game/game_screen.dart';
 import 'package:beat_the_number_21/screens/home/home_screen.dart';
@@ -5,9 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+GameAudio audioPlayer = GameAudio();
+
+Future<void> main() async {
   runApp(const BeatTheNumber21());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class BeatTheNumber21 extends StatelessWidget {

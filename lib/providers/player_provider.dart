@@ -1,4 +1,5 @@
 import 'package:beat_the_number_21/controllers/game_controller.dart';
+import 'package:beat_the_number_21/main.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
@@ -38,6 +39,7 @@ class PlayerProvider extends ChangeNotifier {
         Timer(Duration(seconds: Random().nextInt(2) + 1), () {
           notifyListeners();
           cpuPlay();
+          audioPlayer.selectMove(true);
           canPlay = true;
         });
       }

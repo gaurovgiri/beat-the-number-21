@@ -1,3 +1,4 @@
+import 'package:beat_the_number_21/main.dart';
 import 'package:beat_the_number_21/providers/player_provider.dart';
 import 'package:beat_the_number_21/screens/utils.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class Moves extends StatelessWidget {
             ),
             onPressed: () {
               if (player.canPlay) {
+                audioPlayer.selectMove(true);
                 player.playMove(move);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -41,7 +43,7 @@ class AvailableMoves extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: getHeight(context) * 0.3,
+      height: getHeight(context) * 0.2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

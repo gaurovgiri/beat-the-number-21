@@ -1,3 +1,4 @@
+import 'package:beat_the_number_21/main.dart';
 import 'package:beat_the_number_21/screens/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +55,8 @@ class _NavButtonState extends State<NavButton> with TickerProviderStateMixin {
               borderRadius: BorderRadius.circular(50)),
           child: TextButton(
               onPressed: () {
+                audioPlayer.backgroundMusic(false);
+                audioPlayer.gameStart(true);
                 Navigator.of(context).pushNamed(widget.navigateTo);
               },
               child: Text(

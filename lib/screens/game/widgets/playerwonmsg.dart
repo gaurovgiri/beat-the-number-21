@@ -1,3 +1,4 @@
+import 'package:beat_the_number_21/main.dart';
 import 'package:flutter/material.dart';
 import 'package:beat_the_number_21/screens/utils.dart';
 
@@ -19,6 +20,7 @@ class _PlayerWonMessageState extends State<PlayerWonMessage>
 
   @override
   void initState() {
+    audioPlayer.playerWon(true);
     super.initState();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 500),
@@ -34,6 +36,8 @@ class _PlayerWonMessageState extends State<PlayerWonMessage>
   @override
   void dispose() {
     _controller.dispose();
+    audioPlayer.playerWon(false);
+    audioPlayer.backgroundMusic(true);
     super.dispose();
   }
 

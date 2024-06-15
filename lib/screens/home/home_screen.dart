@@ -1,3 +1,4 @@
+import 'package:beat_the_number_21/main.dart';
 import 'package:beat_the_number_21/screens/home/widgets/buttons.dart';
 import 'package:beat_the_number_21/screens/home/widgets/footer.dart';
 import 'package:beat_the_number_21/screens/home/widgets/title.dart';
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    audioPlayer.backgroundMusic(true);
     return PopScope(
       canPop: false,
       child: Scaffold(
